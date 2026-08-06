@@ -793,18 +793,21 @@ def page_settings():
     hero("Settings", "Configure your API key, model, and preferences.")
 
     section_title("🔑 OpenAI API Configuration")
-    api_key = st.text_input("OpenAI API Key", value=st.session_state.api_key, type="password",
-                             help="Your key is stored only in this session and never logged.")
+    api_key = st.text_input( "OpenAI API Key", value="", placeholder="Enter your OpenAI API Key", type="password",  help="Your API key is hidden and will not be displayed." )
     model = st.selectbox("LLM Model", ["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"],
                           index=["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"].index(st.session_state.model)
                           if st.session_state.model in ["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"] else 0)
     temperature = st.slider("Creativity (Temperature)", 0.0, 1.0, st.session_state.temperature, 0.1)
 
     if st.button("💾 Save Settings", type="primary"):
-        st.session_state.api_key = api_key
-        st.session_state.model = model
-        st.session_state.temperature = temperature
-        st.success("✅ Settings saved for this session.")
+
+    if api_key.strip():
+        st.session_state.api_key = api_key.strip()
+
+    st.session_state.model = model
+    st.session_state.temperature = temperature
+
+    st.success("✅ Settings saved.")
 
     st.write("")
     section_title("🎨 Appearance")
