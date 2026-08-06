@@ -792,15 +792,32 @@ def page_reports():
 def page_settings():
     hero("Settings", "Configure your API key, model, and preferences.")
 
-    section_title("🔑 OpenAI API Configuration")
-    api_key = st.text_input( "OpenAI API Key", value="", placeholder="Enter your OpenAI API Key", type="password",  help="Your API key is hidden and will not be displayed." )
-    model = st.selectbox("LLM Model", ["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"],
-                          index=["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"].index(st.session_state.model)
-                          if st.session_state.model in ["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"] else 0)
-    temperature = st.slider("Creativity (Temperature)", 0.0, 1.0, st.session_state.temperature, 0.1)
+section_title("🔑 OpenAI API Configuration")
 
-    if st.button("💾 Save Settings", type="primary"):
+api_key = st.text_input(
+    "OpenAI API Key",
+    value="",
+    placeholder="Enter your OpenAI API Key",
+    type="password",
+    help="Your API key is hidden and will not be displayed."
+)
 
+model = st.selectbox(
+    "LLM Model",
+    ["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"],
+    index=["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"].index(st.session_state.model)
+    if st.session_state.model in ["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"] else 0
+)
+
+temperature = st.slider(
+    "Creativity (Temperature)",
+    0.0,
+    1.0,
+    st.session_state.temperature,
+    0.1
+)
+
+if st.button("💾 Save Settings", type="primary"):
     if api_key.strip():
         st.session_state.api_key = api_key.strip()
 
@@ -808,21 +825,6 @@ def page_settings():
     st.session_state.temperature = temperature
 
     st.success("✅ Settings saved.")
-
-    st.write("")
-    section_title("🎨 Appearance")
-    st.caption("Theme follows your Streamlit app settings (top-right menu → Settings → Theme). "
-               "You can toggle Light/Dark mode there.")
-
-    st.write("")
-    section_title("🗑️ Data Management")
-    if st.button("Clear All Session Data (JD + Candidates + Chats)"):
-        for key in ["jd_text", "jd_data", "candidates", "vector_store", "chat_history",
-                    "hr_chat_history", "interview_cache"]:
-            st.session_state[key] = [] if isinstance(st.session_state.get(key), list) else (
-                {} if isinstance(st.session_state.get(key), dict) else (None if key == "vector_store" else "")
-            )
-        st.success("All session data cleared.")
 
 
 # ============================================================
