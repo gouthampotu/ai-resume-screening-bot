@@ -800,12 +800,18 @@ def page_reports():
 def page_settings():
     hero("Settings", "Configure your API key, model, and preferences.")
 
-    section_title("🔑 OpenAI API Configuration")
-    api_key = st.text_input("OpenAI API Key", value=st.session_state.api_key, type="password",
-                             help="Your key is stored only in this session and never logged.")
-    model = st.selectbox("LLM Model", ["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"],
-                          index=["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"].index(st.session_state.model)
-                          if st.session_state.model in ["gpt-4o-mini", "gpt-4.1", "gpt-4o", "gpt-4.1-mini"] else 0)
+section_title("🔑 OpenAI API Configuration")
+
+if st.session_state.api_key:
+    st.success("✅ OpenAI API Key Configured")
+else:
+    st.warning("❌ OpenAI API Key Not Configured")
+
+api_key = st.text_input(
+    "New OpenAI API Key",
+    type="password",
+    placeholder="Enter new API key (optional)"
+)
     temperature = st.slider("Creativity (Temperature)", 0.0, 1.0, st.session_state.temperature, 0.1)
 
     if st.button("💾 Save Settings", type="primary"):
