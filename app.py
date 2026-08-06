@@ -6,7 +6,7 @@ Main Streamlit application entry point.
 
 import os
 import json
-import streamlit as st"""
+import streamlit as st""
 app.py
 AI-Powered HR Resume Screening & Interview Assistant
 Main Streamlit application entry point.
