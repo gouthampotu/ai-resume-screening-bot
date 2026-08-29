@@ -1,6 +1,5 @@
 streamlit==1.38.0
-
-openai==1.51.2
+openai==1.54.2
 
 langchain==0.3.7
 langchain-community==0.3.5
@@ -9,19 +8,17 @@ langchain-text-splitters==0.3.0
 langchain-core==0.3.15
 
 faiss-cpu==1.8.0
-
 pypdf==4.3.1
 
 python-docx==1.1.2
 docx2txt==0.8
 
 pandas==2.2.3
-numpy<2
+numpy==1.26.4
 
 plotly==5.24.1
-
 reportlab==4.2.5
 openpyxl==3.1.5
 
 python-dotenv==1.0.1
-tiktoken==0.7.0
+tiktoken==0.8.0
