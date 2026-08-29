@@ -1,2 +1,2 @@
-# MINI-PROJECT
+# ai-resume-screening
 ai-resume-screening
