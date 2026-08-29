@@ -8,7 +8,7 @@ import os
 import json
 import streamlit as st
 import pandas as pd
-from dotenv import load_dotenv
+
 
 from utils import parser as P
 from utils import llm_utils as LLM
@@ -18,7 +18,7 @@ from utils import analytics as AN
 from utils import report_generator as REPORT
 from utils import generators as GEN
 
-load_dotenv()
+
 
 # ============================================================
 # PAGE CONFIG
