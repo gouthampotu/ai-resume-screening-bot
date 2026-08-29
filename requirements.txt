@@ -7,7 +7,7 @@ langchain-openai==0.2.6
 langchain-text-splitters==0.3.0
 langchain-core==0.3.15
 
-faiss-cpu==1.8.0
+faiss-cpu==1.15.0
 pypdf==4.3.1
 
 python-docx==1.1.2
