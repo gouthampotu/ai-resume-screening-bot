@@ -62,8 +62,13 @@ init_state()
 
 
 def get_client():
-    if not st.session_state.api_key:
-        return None
+    # Automatically load from st.secrets if not present in session state
+    if "api_key" not in st.session_state or not st.session_state.api_key:
+        if "OPENAI_API_KEY" in st.secrets:
+            st.session_state.api_key = st.secrets["OPENAI_API_KEY"]
+        elif "openai" in st.secrets and "api_key" in st.secrets["openai"]:
+            st.session_state.api_key = st.secrets["openai"]["api_key"]
+            
     return LLM.get_client(st.session_state.api_key)
 
 
