@@ -1,6 +1,5 @@
-```text
 streamlit
-openai>=1.55.3
+openai>=1.55.3,<2.0.0
 httpx==0.27.2
 
 pandas
@@ -11,10 +10,10 @@ python-docx
 pypdf
 pdfplumber
 
-langchain-core
 langchain-community
 langchain-openai
 langchain-text-splitters
+langchain-core
 faiss-cpu
 tiktoken
 
@@ -24,4 +23,5 @@ xlsxwriter
 
 plotly
 scikit-learn
-```
+matplotlib
+supabase
