@@ -1,22 +1,16 @@
 ```text
-# Streamlit application
 streamlit
+openai>=1.55.3
+httpx==0.27.2
 
-# Data processing
 pandas
 numpy
 
-# OpenAI API
-openai
-httpx
-
-# Resume and document parsing
 docx2txt
 python-docx
 pypdf
 pdfplumber
 
-# LangChain and RAG chatbot
 langchain-core
 langchain-community
 langchain-openai
@@ -24,12 +18,10 @@ langchain-text-splitters
 faiss-cpu
 tiktoken
 
-# Reports and Excel exports
 reportlab
 openpyxl
 xlsxwriter
 
-# Analytics and visualizations
 plotly
 scikit-learn
 ```
