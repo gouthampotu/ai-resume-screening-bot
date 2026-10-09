@@ -7,8 +7,16 @@ chat-completion helpers used across the app.
 from openai import OpenAI
 
 
+
 def get_client(api_key: str) -> OpenAI:
-    return OpenAI(api_key=api_key)
+    """Create an OpenAI client after validating the API key."""
+    if not api_key or not api_key.strip():
+        raise ValueError(
+            "OpenAI API key is missing. Configure it in Streamlit Settings or Secrets."
+        )
+
+    return OpenAI(api_key=api_key.strip())
+
 
 
 def chat(client: OpenAI, model: str, system: str, user: str, temperature: float = 0.4) -> str:
